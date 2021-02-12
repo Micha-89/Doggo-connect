@@ -14,9 +14,10 @@ router.get("/signupUser", (req, res, next) => {
 });
 
 router.post("/signupUser", (req, res)=>{
+  console.log(req.body)
   const {username, password, email} = req.body;
   if(!username || !password || !email){
-    res.render('auth/signupUser', {message: 'These fields are mandatory'})
+    res.render('auth/signupUser', {message: 'All fields are mandatory'})
     return 
   } 
   if(password.length<8){
@@ -24,7 +25,7 @@ router.post("/signupUser", (req, res)=>{
     return
   }
   User.findOne({username: username}).then(userDB=>{
-    if(!userDB !== null){
+    if(userDB !== null){
     res.render('auth/signupUser', {message: 'This username is taken. Choose another 👀!'})
     }else{
       const salt=bcrypt.genSaltSync();

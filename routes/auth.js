@@ -2,6 +2,12 @@ const router = require("express").Router();
 const User = require('../models/User');
 const bcrypt=require('bcrypt');
 const bcryptSalt = 10;
+
+/* LOGIN USER*/
+router.get("/loginUser", (req, res, next) => {
+  res.render("auth/loginUser");
+});
+
 /* SIGN UP USER*/
 router.get("/signupUser", (req, res, next) => {
   res.render("auth/signupUser");
@@ -23,7 +29,8 @@ router.post("/signupUser", (req, res)=>{
     }else{
       const salt=bcrypt.genSaltSync();
       const hash=bcrypt.hashSync(password, salt)
-      User.create({username: username, password: hash}).then(userDB=>{
+      User.create({username: username, email: email, password: hash}).then(userDB=>{
+        console.log(userDB)
         res.redirect('/')
       })
     }

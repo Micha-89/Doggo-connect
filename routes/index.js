@@ -1,5 +1,8 @@
 const router = require("express").Router();
-
+const User = require('../models/User');
+const bcrypt=require('bcrypt');
+const passport = require('passport');
+ 
 /* GET home page */
 const loginCheck = () => {
   return (req, res, next) => {
@@ -20,7 +23,7 @@ router.get("/", (req, res, next) => {
 
 
 router.get('/private', loginCheck(), (req, res) => {
-  res.render('userViews/private');
+  res.render('userViews/private', {user: req.user});
 })
 
 module.exports = router;

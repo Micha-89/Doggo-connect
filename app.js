@@ -34,15 +34,15 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: false, // <== false if you don't want to save empty session object to the store
-    cookie: {
-      sameSite: 'none',
-      httpOnly: true,
-      maxAge:  60 * 1000 *60
-    },
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      
-    })
+    // cookie: {
+      // sameSite: 'none',
+      // httpOnly: true,
+      // maxAge:  60 * 1000 *60
+    // },
+    // store: new MongoStore({
+      // mongooseConnection: mongoose.connection,
+      // 
+    // })
   })
 );
 //defining strategy
@@ -79,7 +79,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ℹ️ Connects to the database
-require("./db");
+// require("./db");
 require("./db/index.js")
 
 // 👇 Start handling routes here

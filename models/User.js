@@ -14,11 +14,13 @@ const userSchema = new Schema({
   },
   password: {
     type: String
-    }
-},
-{
-  timestamps: true
-}
+    },
+  role: {
+    type: String,
+    enum: ['SHELTER', 'ADOPTER', 'ADMIN'],
+   },
+
+ }
 );
 
 const User = model("User", userSchema);

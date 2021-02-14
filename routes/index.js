@@ -2,19 +2,10 @@ const router = require("express").Router();
 const User = require('../models/User');
 const bcrypt=require('bcrypt');
 const passport = require('passport');
- 
-/* GET home page */
-const loginCheck = () => {
-  return (req, res, next) => {
-    // in node-basic-auth: req.session.user
-    // req.isAuthenticated() -> this is a passport function
-    if (req.isAuthenticated()) {
-      next();
-    } else {
-      res.redirect('/loginUser');
-    }
-  }
-}
+const loginCheck = require('../middleware/loginCheck.js')
+const checkRoles = require('../middleware/permissions.js')
+const shelter='SHELTER'
+const adopter='ADOPTER'
 
 
 router.get("/", (req, res, next) => {
@@ -22,7 +13,7 @@ router.get("/", (req, res, next) => {
 });
 
 
-router.get('/private', loginCheck(), (req, res) => {
+router.get('/private', checkRoles(adopter), (req, res) => {
   
   res.render('userViews/private', {user: req.user});
 })

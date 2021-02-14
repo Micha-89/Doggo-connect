@@ -16,6 +16,19 @@
     <input type="email" id="input-email" name="email" />
  </div>
 
+ <div>
+    <input type="radio" id="contactChoice1"
+     name="role" value="ADOPTER"  >
+    <label for="contactChoice1">Are you an adopter</label>
+
+    <input type="radio"  name="role" value="SHELTER">
+    <label for="contactChoice2">Are you a shelter</label>
+
+    
+  </div>
+
+
+
  {{#if message}}
   <div class="error-message">{{message}}</div>
  {{/if}}

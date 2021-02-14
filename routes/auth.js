@@ -8,14 +8,34 @@ router.get("/loginUser", (req, res, next) => {
   res.render("auth/loginUser");
 });
 
-router.post(
-  '/loginUser',
-  passport.authenticate('local', {
-    successRedirect: '/private',
-    failureRedirect: '/loginUser',
-    passReqToCallback: true
-  })
-);
+
+
+router.post('/loginUser', (req, res, next) => {
+  passport.authenticate('local', (err, theUser, failureDetails) => {
+    if (err) {
+      // Something went wrong authenticating user
+      return next(err);
+    }
+ 
+    if (!theUser) {
+      // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
+      res.render('auth/loginUser', { message: 'Ooops, wrong password or username' });
+      return;
+    }
+    
+ 
+    // save user in session: req.user
+    req.login(theUser, err => {
+      if (err) {
+        // Session save went bad
+        return next(err);
+      }
+ 
+      // All good, we are now logged in and `req.user` is now set
+      res.redirect('/private');
+    });
+  })(req, res, next);
+});
 
 
 /* SIGN UP USER*/
@@ -25,7 +45,7 @@ router.get("/signupUser", (req, res, next) => {
 
 router.post("/signupUser", (req, res)=>{
   console.log(req.body)
-  const {username, password, email} = req.body;
+  const {username, password, email, role} = req.body;
   if(!username || !password || !email){
     res.render('auth/signupUser', {message: 'All fields are mandatory'})
     return 
@@ -40,9 +60,24 @@ router.post("/signupUser", (req, res)=>{
     }else{
       const salt=bcrypt.genSaltSync(10);
       const hash=bcrypt.hashSync(password, salt)
-      User.create({username: username, email: email, password: hash}).then(userDB=>{
-        console.log(userDB)
-        res.redirect('/')
+      User.create({username: username, email: email, password: hash, role: role}).then(userDB=>{
+        // passport.authenticate('local', {
+        //   successRedirect: '/private',
+        //   failureRedirect: '/signupUser',
+        //   session: true,
+
+        // });
+        req.login(userDB, err => {
+          if (err) {
+            // Session save went bad
+            return next(err);
+          }
+     
+          // All good, we are now logged in and `req.user` is now set
+          res.redirect('/private');
+        });
+        // console.log(userDB)
+        // res.redirect('/')
       }).catch(err=>console.log('Oops!', err))
     }
   }).catch(err=>console.log('Something went wrong', err))

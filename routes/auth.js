@@ -8,6 +8,18 @@ router.get("/loginUser", (req, res, next) => {
   res.render("auth/loginUser");
 });
 
+router.post(
+  '/loginUser',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/loginUser',
+    passReqToCallback: true
+  })
+);
+ 
+ 
+
+
 /* SIGN UP USER*/
 router.get("/signupUser", (req, res, next) => {
   res.render("auth/signupUser");
@@ -28,12 +40,12 @@ router.post("/signupUser", (req, res)=>{
     if(userDB !== null){
     res.render('auth/signupUser', {message: 'This username is taken. Choose another 👀!'})
     }else{
-      const salt=bcrypt.genSaltSync();
+      const salt=bcrypt.genSaltSync(10);
       const hash=bcrypt.hashSync(password, salt)
       User.create({username: username, email: email, password: hash}).then(userDB=>{
         console.log(userDB)
         res.redirect('/')
-      })
+      }).catch(err=>console.log('Oops!', err))
     }
   }).catch(err=>console.log('Something went wrong', err))
 })

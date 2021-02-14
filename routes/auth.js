@@ -16,8 +16,6 @@ router.post(
     passReqToCallback: true
   })
 );
- 
- 
 
 
 /* SIGN UP USER*/

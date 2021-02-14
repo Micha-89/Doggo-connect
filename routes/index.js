@@ -23,6 +23,7 @@ router.get("/", (req, res, next) => {
 
 
 router.get('/private', loginCheck(), (req, res) => {
+  
   res.render('userViews/private', {user: req.user});
 })
 

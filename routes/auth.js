@@ -30,7 +30,7 @@ router.post('/loginUser', (req, res, next) => {
         // Session save went bad
         return next(err);
       }
- 
+      
       // All good, we are now logged in and `req.user` is now set
       res.redirect('/private');
     });
@@ -83,5 +83,9 @@ router.post("/signupUser", (req, res)=>{
   }).catch(err=>console.log('Something went wrong', err))
 })
 
+router.get('/logout', (req, res)=>{
+  req.logout();
+  res.redirect('/')
+})
 
 module.exports = router;

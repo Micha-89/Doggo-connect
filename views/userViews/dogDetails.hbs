@@ -1,0 +1,36 @@
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <a href="/logout">Logout</a>
+</header>
+
+{{#with dog}}
+<div id="dogDetailFlex">
+  <img src="{{image}}" alt="">
+  <div>
+    <h1>{{name}}</h1>
+    <ul>
+      <li><span>Breed:</span>{{breed}}</li>
+      <li><span>Size:</span>{{size}}</li>
+      <li><span>Age in months:</span>{{age}}</li>
+      <li><span>Gender:</span>{{gender}}</li>
+      <li><span>Description:</span></li>
+      <li>{{description}}</li>
+    </ul>
+    <div>
+      <h2>Apply to adopt {{name}}!</h2>
+      <p>{{name}} is sheltered by {{shelter.username}}. Fill in the following form to give them a new home!</p>
+      <form action="#" method="POST">
+        <label for="apply">Please let us know why you would love to adopt {{name}}:</label>
+        <br>
+        <textarea name="apply" id="apply" cols="70" rows="10"></textarea>
+        <br>
+        <button type="submit">Apply</button>
+      </form>
+  </div>
+  </div>
+</div>
+
+{{/with}}

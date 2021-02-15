@@ -30,7 +30,7 @@ router.post('/loginUser', (req, res, next) => {
         // Session save went bad
         return next(err);
       }
- 
+      
       // All good, we are now logged in and `req.user` is now set
       res.redirect('/private');
     });

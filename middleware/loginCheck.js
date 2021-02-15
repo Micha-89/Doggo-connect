@@ -3,7 +3,7 @@ const loginCheck = () => {
     if (req.isAuthenticated()) {
       next();
     } else {
-      res.redirect('/loginUser', {message: 'Please'});
+      res.redirect('/loginUser');
     }
   }
 }

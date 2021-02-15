@@ -8,14 +8,14 @@ const shelter='SHELTER'
 const adopter='ADOPTER'
 
 
-router.get("/", (req, res, next) => {
-  res.render("index", {user: req.user});
-});
+ 
+ 
+ 
+ 
 
+router.get('/private', loginCheck(), (req, res) => {
+  
+  res.render('userViews/private', {user: req.user});
+})
 
-// router.get('/private', checkRoles(adopter), (req, res) => {
-  // 
-  // res.render('userViews/private', {user: req.user});
-// })
-// 
 module.exports = router;

@@ -8,6 +8,8 @@ const Dog = require('../models/Dog')
 const shelter='SHELTER'
 const adopter='ADOPTER'
 
+
+
 router.get('/private', loginCheck(), (req, res) => {
   if(req.user.role === shelter){
     res.render('shelterViews/private', {user: req.user})
@@ -24,9 +26,7 @@ router.get('/private', loginCheck(), (req, res) => {
   }
 })
 
-  
- 
- 
+
  
  
 

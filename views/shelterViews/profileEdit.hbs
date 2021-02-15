@@ -1,0 +1,36 @@
+<h1>Welcome to our family, {{user.username}}</h1>
+
+
+<p>Before adding any posts, please complete your user profile. By doing so, you will make it easier for your doggos to find a home!</p>
+
+
+<form action="/profile" method="POST">
+
+<label for="username">Username: </label>
+<input type="text" value="{{user.username}}" id="username" readonly>
+
+<label for="email">Email: </label>
+<input type="text" value="{{user.email}}" id="email" readonly>
+
+<label for="name">Full name of your organization</label>
+<input type="text" name="name" id="name">
+
+{{!-- Address --}}
+<label for="street">Street: </label>
+<input type="text"name="street" id="street">
+
+<label for="city">City</label>
+<input type="text" name="city" id="city">
+
+<label for="postcode">Postcode</label>
+<input type="text" name="postcode" id="postcode">
+
+<button type="submit">Submit your profile</button>
+
+
+</form> 
+
+{{#if message}}
+
+<p>{{message}}</p>
+{{/if}}

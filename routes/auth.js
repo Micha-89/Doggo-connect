@@ -37,6 +37,13 @@ router.post('/loginUser', (req, res, next) => {
   })(req, res, next);
 });
 
+/* LOGOUT  USER*/
+
+router.get('/logout', (req, res)=>{
+  req.logout();
+  res.redirect('/')
+})
+
 
 /* SIGN UP USER*/
 router.get("/signupUser", (req, res, next) => {

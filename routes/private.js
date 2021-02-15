@@ -8,7 +8,10 @@ const shelter='SHELTER'
 const adopter='ADOPTER'
 
 
-  
+
+
+
+
 
 router.get('/private', loginCheck(), (req, res) => {
   if(req.user.role === shelter){
@@ -18,9 +21,7 @@ router.get('/private', loginCheck(), (req, res) => {
   }
 })
 
-  
- 
- 
+
  
  
 

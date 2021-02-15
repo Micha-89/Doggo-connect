@@ -1,0 +1,45 @@
+<h1>Put up a dog for adoption!</h1>
+
+<form action="/dogCreation" method="POST">
+
+<label for="name">Name</label>
+<input type="text" name="name" id="name">
+
+<label for="age">Age in months</label>
+<input type="number" name="age" id="age">
+
+<div>
+   <input type="checkbox"
+    name="gender" value="male" id="male" >
+   <label for="male">Male</label>
+   <input type="checkbox"  name="gender" value="female"  id="female">
+   <label for="female">Female</label>
+  
+ </div>
+
+<div>
+   <input type="checkbox"
+    name="size" value="small" id="small"   >
+   <label for="small">Small</label>
+
+   <input type="checkbox"  name="size" value="middle" id="middle" >
+   <label for="middle">Middle</label>
+
+   <input type="checkbox"  name="size" value="large" id="large">
+  <label for="large">Large</label>
+ </div>
+
+
+<label for="breed">Breed</label>
+<input type="text" name="breed" id="breed">
+
+
+<label for="image">Image</label>
+<input type="text" name="image" id="image">
+
+<label for="description">Description</label>
+<textarea name="description" id="description" cols="30" rows="10" placeholder="Describe your doggo..."></textarea>
+
+<button type="submit">Add</button>
+
+</form>

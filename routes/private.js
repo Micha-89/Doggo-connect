@@ -8,14 +8,20 @@ const shelter='SHELTER'
 const adopter='ADOPTER'
 
 
- 
- 
- 
- 
+  
 
 router.get('/private', loginCheck(), (req, res) => {
-  
-  res.render('userViews/private', {user: req.user});
+  if(req.user.role === shelter){
+    res.render('shelterViews/private', {user: req.user})
+  }else{
+    res.render('userViews/private', {user: req.user});
+  }
 })
+
+  
+ 
+ 
+ 
+ 
 
 module.exports = router;

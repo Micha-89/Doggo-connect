@@ -44,9 +44,9 @@ router.get("/signupUser", (req, res, next) => {
 });
 
 router.post("/signupUser", (req, res)=>{
-  console.log(req.body)
+ 
   const {username, password, email, role} = req.body;
-  if(!username || !password || !email){
+  if(!username || !password || !email|| !role){
     res.render('auth/signupUser', {message: 'All fields are mandatory'})
     return 
   } 

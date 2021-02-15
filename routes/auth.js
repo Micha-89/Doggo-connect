@@ -83,5 +83,9 @@ router.post("/signupUser", (req, res)=>{
   }).catch(err=>console.log('Something went wrong', err))
 })
 
+router.get('/logout', (req, res)=>{
+  req.logout();
+  res.redirect('/')
+})
 
 module.exports = router;

@@ -3,15 +3,23 @@
     <img src="/images/dog.png" alt="dog icon">
     <h1>DOGGO-CONNECT</h1>
   </div>
-  <p>logout</p>
+  <a href="/logout">Logout</a>
 </header>
 
-<div>
-  <div></div>
-  <div></div>
+
+<div id="dogView">
+  {{#each dog}}
+    <a href="#">
+      <div id="dogCard">
+        <img src="{{this.image}}" alt="dog picture">
+        <p>{{this.name}}</p>
+      </div>
+    </a>
+  {{/each}}
 </div>
 
-<h1>ARE YOU THERE{{user.username}}LALALA</h1>
+
+
 
 
  

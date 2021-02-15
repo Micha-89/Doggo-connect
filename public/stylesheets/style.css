@@ -1,11 +1,97 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  padding: 0;
+  margin: 0;
+  font: 14px 'Varela Round', sans-serif;
+ }
 
-a {
-  color: #00b7ff; }
+/* HEADER */
 
-h1 {
-  color: 15px; }
+#userHeader {
+  background-color: #99bbad;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+#userHeader div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40px;
+}
+
+#userHeader img {
+  width: 70px;
+  margin-right: 20px;
+}
+
+#userHeader h1 {
+  font-size: 43px;
+}
+
+#userHeader h1:hover {
+  cursor: default;
+}
+
+#userHeader a {
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+#userHeader a:hover {
+  opacity: 0.8;
+}
+
+/* 2 Dog overview user view */
+
+#dogView {
+  padding: 40px 40px;
+  display: flex;  
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 2.2 Dog cards */
+
+#dogCard {
+  position: relative;
+  margin-right: 40px;
+  margin-bottom: 30px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+#dogCard:hover {
+  opacity: 0.7;
+}
+
+#dogCard img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#dogCard p {
+  position: absolute;
+  bottom: 0px;
+  color: 	rgb(0,0,0,0.5);
+  font-weight: bold;
+  background-color: rgb(255,255,255,0.5);
+  font-size: 20px;
+  width: 250px;
+  text-align: center;
+  padding-top: 10px;
+  margin: 0;
+  height: 20%;
+}
 
 /*# sourceMappingURL=style.css.map */

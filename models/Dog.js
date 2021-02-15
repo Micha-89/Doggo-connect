@@ -3,7 +3,7 @@ const dogSchema = new Schema({
   name: String,
   shelter: {
     type: Schema.Types.ObjectId,
-    ref: 'Shelter'
+    ref: 'User'
   },
   image: String,
   description: String,

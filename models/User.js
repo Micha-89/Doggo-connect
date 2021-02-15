@@ -19,6 +19,12 @@ const userSchema = new Schema({
     type: String,
     enum: ['SHELTER', 'ADOPTER', 'ADMIN'],
    },
+  
+  name: String, 
+  street: String, 
+  city: String,
+  postcode: String,  
+  description: String
 
  }
 );

@@ -18,7 +18,6 @@ const passport = require('passport')
 const MongoStore = require('connect-mongo')(session);
 const LocalStrategy=require('passport-local').Strategy;
 const User = require('./models/User.js')
-const Shelter = require('./models/Shelter.js')
 const Dog = require('./models/Dog.js')
 const mongoose=require('mongoose');
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares

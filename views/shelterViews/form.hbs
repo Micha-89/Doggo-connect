@@ -1,6 +1,6 @@
 <h1>Put up a dog for adoption!</h1>
 
-<form action="/dogs" method="POST">
+<form action="/dogs" method="POST" enctype="multipart/form-data">
 
 <label for="name">Name</label>
 <input type="text" name="name" id="name">
@@ -35,12 +35,12 @@
 
 
 <label for="image">Image</label>
-<input type="text" name="image" id="image">
+<input type="file" name="image" id="image">
 
 <label for="description">Description</label>
 <textarea name="description" id="description" cols="30" rows="10" placeholder="Describe your doggo..."></textarea>
 
-<button type="submit">Add</button>
+<button type="submit">Add a Doggo</button>
 
 </form>
 

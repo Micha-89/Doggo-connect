@@ -6,6 +6,7 @@ const passport = require('passport');
 const loginCheck = require('../middleware/loginCheck.js')
 const checkRoles = require('../middleware/permissions.js')
 const fileUploader = require('../config/cloudinary.config');
+const cloudinary = require('cloudinary').v2;
 const shelter='SHELTER'
 const adopter='ADOPTER'
 
@@ -82,21 +83,30 @@ router.post('/dogs/:id/edit', checkRoles(shelter), fileUploader.single('image'),
   
   console.log('Round1', req.file)
   if(req.file){
-    console.log('Round2',req.file)
-     
+         
     const publicId = req.file.filename 
     const imageUrl = req.file.path;
     Dog.findByIdAndUpdate(id, {name, age, gender, size, breed, description, imageUrl, publicId }, {new: true})
   .then(dog=> res.redirect(`/dogs/${dog._id}`))
   .catch(err=>console.log(err))
   }else{
-    console.log('Round3')
+    
     Dog.findByIdAndUpdate(id, {name, age, gender, size, breed, description }, {new: true})
   .then(dog=> res.redirect(`/dogs/${dog._id}`))
   .catch(err=>console.log(err))
   }
-
   
+})
+
+router.get('/dogs/:id/delete', (req, res)=>{
+  Dog.findByIdAndDelete(req.params.id)
+  .then(dog=>{
+    if(dog.imgPath){
+       cloudinary.uploader.destroy(dog.publicId)
+    }else{
+      res.redirect('/dogs/all')
+    }
+  }).catch(err=>console.log(err))
 })
 
 
@@ -128,7 +138,6 @@ router.post('/private/profile', checkRoles(shelter), (req,res)=>{
  })
 
 
- 
  
 
  module.exports=router

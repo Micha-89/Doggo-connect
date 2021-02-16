@@ -1,10 +1,13 @@
 
-<p> From {{user.username}}</p>
+<p> Your doggos</p>
+
 {{#each dog}}
 
 <h3>{{name}}</h3>
 <a href="/dogs/{{this._id}}">Check me Out</a>
  
+ 
+
 <p>{{breed}}</p>
 <p>{{size}}</p>
 <p>{{age}}</p>
@@ -12,3 +15,6 @@
 <img style="width:200px" src="{{imageUrl}}" alt="">
 <p>{{description}}</p>
 {{/each}}
+
+<a href="/dogs">add a dog</a>
+<a href="/private">Return to your dashboard</a>

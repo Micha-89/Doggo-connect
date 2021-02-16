@@ -1,29 +1,33 @@
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <div>
+    <a href="/private">Dashbord</a>
+    <a href="/logout">Logout</a>
+  </div>
+</header>
+
 {{#with dog}}
-
-<p>{{name}}</p>
- 
-{{!-- SHELTER INFO WITH POSSIBILITY TO UPDATE THE PROFILE --}}
-<h2>Shelter Info: {{shelter.name}}, {{shelter.street}}, {{shelter.city}}, {{shelter.postcode}}</h2>
-<p>If your personal information is no longer accurate, please consider <a href="/private/profile">changing it</a>  </p>
-
-
-{{!-- DOG INFO --}}
-<img style="width:100px" src="{{imageUrl}}" alt="">
-
-<p>{{age}}</p>
-
-<p>{{gender}}</p>
-
-<p>{{size}}</p>
-
-<p>{{breed}}</p>
-
-<p>{{description}}</p>
-
+<div id="dogDetailFlex">
+  <img src="{{imageUrl}}" alt="">
+  <div>
+    <h1>{{name}}</h1>
+    <ul>
+      <li><span>Breed:</span>{{breed}}</li>
+      <li><span>Size:</span>{{size}}</li>
+      <li><span>Age in months:</span>{{age}}</li>
+      <li><span>Gender:</span>{{gender}}</li>
+      <li><span>Description:</span></li>
+      <li>{{description}}</li>
+    </ul>
+    <div id="buttonFlex">
+      <a class="detailButton" href="/dogs/{{_id}}/edit">Edit</a>
+      <a class="detailButton" href="/dogs/{{_id}}/delete">Delete</a>
+    </div>
+    <a href="/dogs/all">Back</a>
+  </div>
+</div>
 
 {{/with}}
-<a href="/dogs/{{dog._id}}/edit">Edit this doggo</a>
-<p>If {{dog.name}} already found a home, <a href="/dogs/{{dog._id}}/delete">delete</a> </p>
-
-
-<a href="/private">Return to your dashboard</a>

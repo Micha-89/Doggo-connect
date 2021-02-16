@@ -1,22 +1,20 @@
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <div>
+    <a href="/private">Dashbord</a>
+    <a href="/logout">Logout</a>
+  </div>
+</header>
 
-
-<h1> HI {{user.username}}</h1>
-
-<ul> 
-
-
-
-<li><a href="/private/profile/{{user._id}}">Your Profile</a></li>
-
-<li><a href="/dogs">add a dog</a></li>
-<li><a href="/dogs/all">See all dogs</a></li>
-
-
-<li><a href="/logout">Logout</a></li>
-
-
-</ul>
-
+<div id="dogView">
+  <a href="/private/profile/{{user._id}}" class="addDogA"><div class="addDog"><p>Your Profile</p></div></a>
+  <a href="/dogs/all" class="addDogA"><div class="addDog"><p>See all dogs</p></div></a>
+  <a href="/dogs" class="addDogA"><div class="addDog"><p>Add dog</p></div></a>
+  <a href="#" class="addDogA"><div class="addDog"><p>Adoption <br> applications</p></div></a>
+</div>
 
 
 

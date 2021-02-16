@@ -62,6 +62,29 @@ body {
 
 /* 2.2 Dog cards */
 
+.addDogA {
+  text-decoration: none;
+}
+
+
+.addDog {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebd8b7;
+  border-radius: 15px;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.addDog:hover{
+  opacity: 0.7;
+}
+
 #dogCard {
   position: relative;
   width: 250px;
@@ -257,4 +280,27 @@ body {
 }
 
 
-/* Sign Up */
+/* Details dog shelter */
+
+.detailButton {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #ebd8b7;
+  width: 60px;
+  text-align: center;
+}
+
+.detailButton:hover{
+  opacity: 0.7;
+}
+
+#buttonFlex {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <div>
+    <a href="/private">Dashbord</a>
+    <a href="/logout">Logout</a>
+  </div>
+</header>
+
+{{#with dogInfo}}
+
+<div id="shelterInfo">
+  <h1>{{shelter.name}}</h1>
+  <h3>Address:</h3>
+  <p>{{shelter.street}}</p>
+  <p>{{shelter.postcode}}, {{shelter.city}}</p>
+</div>
+<a href="/dogDetails/{{_id}}">Go back</a>
+
+{{/with}}

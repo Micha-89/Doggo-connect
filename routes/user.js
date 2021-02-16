@@ -8,7 +8,6 @@ router.get('/dogDetails/:id', (req, res) => {
   Dog.findById(dogId)
   .populate('shelter')
   .then(dogInfo => {
-    
     res.render('userViews/dogDetails', { dog : dogInfo})
   })
   .catch(err => {

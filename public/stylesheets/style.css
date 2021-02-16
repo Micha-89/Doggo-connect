@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font: 14px 'Varela Round', sans-serif;
+  background-color: rgb(153, 187, 173,0.2);
  }
 
 /* HEADER */
@@ -137,6 +138,7 @@ body {
 
 #dogDetailFlex textarea{
  margin: 10px 0;
+ background-color: rgb(153, 187, 173,0.0);
 }
 
 #dogDetailFlex button {
@@ -153,4 +155,79 @@ body {
   opacity: 0.7;
 }
 
-/*# sourceMappingURL=style.css.map */
+/* home page */
+
+#homepageWrap{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  padding-top: 20px;
+}
+
+#hompageChildWrap1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#hompageChildWrap1 img {
+  width: 95%;
+}
+
+#hompageChildWrap1 h1 {
+  font-weight: bold;
+  font-size: 55px;
+  text-align: center;
+  margin: 0;
+}
+
+#hompageChildWrap2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+  gap: 20px;
+}
+
+#hompageChildWrap2 p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#homepageAncharWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+#homepageWrap a {
+  color: black;
+  font-size: 26px;
+  font-weight: bold;
+  width: 94px;
+  padding: 20px 40px;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  text-decoration: none;
+  background-color: #ebd8b7;
+}
+
+#homepageWrap a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#homepageFooter {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: 5%;
+}
+
+
+/* Sign Up */

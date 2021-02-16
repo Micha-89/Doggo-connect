@@ -62,6 +62,29 @@ body {
 
 /* 2.2 Dog cards */
 
+.addDogA {
+  text-decoration: none;
+}
+
+
+.addDog {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebd8b7;
+  border-radius: 15px;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.addDog:hover{
+  opacity: 0.7;
+}
+
 #dogCard {
   position: relative;
   width: 250px;
@@ -139,6 +162,7 @@ body {
 #dogDetailFlex textarea{
  margin: 10px 0;
  background-color: rgb(153, 187, 173,0.0);
+ font-size: 20px;
 }
 
 #dogDetailFlex button {
@@ -159,6 +183,26 @@ body {
   color: black;
   font-weight: bold;
   text-decoration: none;
+}
+
+/* Shelter details */
+
+#shelterInfo {
+  margin: 60px 60px;
+  font-size: 20px;
+}
+
+#shelterInfo a {
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  position: relative;
+  top: 15px;
+}
+
+#shelterInfo p {
+  margin: 5px auto;
 }
 
 /* home page */
@@ -194,13 +238,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 25%;
+  width: 26%;
   gap: 20px;
+}
+
+#hompageChildWrap2 h1 {
+  font-size: 30px;
+  margin: 0;
+  text-decoration: underline;
 }
 
 #hompageChildWrap2 p {
   font-size: 24px;
   font-weight: bold;
+  margin-top: 0;
 }
 
 #homepageAncharWrap {
@@ -236,4 +287,119 @@ body {
 }
 
 
+/* Details dog shelter */
+
+.detailButton {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #ebd8b7;
+  width: 60px;
+  text-align: center;
+}
+
+.detailButton:hover{
+  opacity: 0.7;
+}
+
+#buttonFlex {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
 /* Sign Up */
+
+#signUpWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  font-size: 20px;
+  background-color: rgb(153, 187, 173,0.5);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#form-container h2 {
+  margin: 5px 0;
+}
+
+.inputFieldSignUp {
+  background-color: rgb(255,255,255,0.5);
+  font-size: 20px;
+  width: 300px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.checkSignUp {
+  height: 20px;
+  width: 20px;
+}
+
+#signUpButton {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #ebd8b7;
+  width: 200px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#signUpButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#loginButton {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #ebd8b7;
+  width: 120px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#loginButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.account-message {
+  font-size: 16px;
+}
+
+.account-message a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.error-message p {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  background-color:#ff5e78;
+  border-radius: 15px;
+  padding: 20px;
+}

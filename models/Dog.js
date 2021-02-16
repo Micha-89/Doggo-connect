@@ -5,7 +5,8 @@ const dogSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  image: String,
+  imageUrl: String,
+  publicId: String,
   description: String,
   gender: String,
   breed: String,

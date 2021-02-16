@@ -5,6 +5,7 @@ const bcrypt=require('bcrypt');
 const passport = require('passport');
 const loginCheck = require('../middleware/loginCheck.js')
 const checkRoles = require('../middleware/permissions.js')
+const fileUploader = require('../config/cloudinary.config');
 const shelter='SHELTER'
 const adopter='ADOPTER'
 
@@ -14,16 +15,27 @@ router.get('/dogs', checkRoles(shelter), (req, res) => {
 
 })
 
-router.post('/dogs',checkRoles(shelter), (req, res)=>{
-let {name, age, gender, size, breed, image, description} = req.body;
-
-if(!name || !age || !gender || !size || !breed || !image || !description){
+router.post('/dogs',checkRoles(shelter), fileUploader.single('image'), (req, res)=>{
+let {name, age, gender, size, breed, description} = req.body;
+console.log(req.file)
+const imgPath = req.file.path
+const publicId = req.file.filename 
+if(!name || !age || !gender || !size || !breed || !imgPath ||  !description){
   res.render('shelterViews/form', {message: 'Please provide all the information on the doggo to help find him a home!'})
 }else{
-  Dog.create({name: name, age:age, gender:gender, size: size, breed:breed, image:image, description:description, shelter: req.user._id})
+  Dog.create(
+      {name: name,
+      age:age, 
+      gender:gender, 
+      size: size, 
+      breed:breed, 
+      imageUrl: imgPath, 
+      publicId: publicId,
+      description:description, 
+      shelter: req.user._id})
   .then(dog=>{
     res.redirect('/dogs/all')
-    }).catch(err=>console.log(err))
+    }).catch(err=>console.log(`Error in Process of Dog creation ${err}`))
   }
 })
 
@@ -45,6 +57,15 @@ router.get('/dogs/:id', checkRoles(shelter), (req, res)=>{
 })
 
 //PROFILE PAGE:  EDIT
+
+router.get('/private/profile/:id', checkRoles(shelter), (req, res)=>{
+  const id=req.params.id;
+  User.findById(id).then(user=>{
+    res.render('shelterViews/profile', {user: user})
+  })
+})
+
+
 router.get('/private/profile', checkRoles(shelter), (req, res)=>{
 res.render('shelterViews/profileEdit', {user: req.user})
 })
@@ -57,11 +78,13 @@ router.post('/private/profile', checkRoles(shelter), (req,res)=>{
     User.findByIdAndUpdate(req.user._id, {name, street, city, postcode})
  
     .then(user=>{
-     res.render('shelterViews/profile', {user: req.user})
+      res.redirect(`/private/profile/${user._id}`)
     }).catch(err=>console.log(err))
    }
  })
 
 
+ 
+ 
 
  module.exports=router

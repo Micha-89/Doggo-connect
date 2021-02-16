@@ -4,22 +4,18 @@
 <form action="/private/profile" method="POST">
 
 
-
-
-
-
 <label for="name">Full name of your organization</label>
-<input type="text" name="name" id="name">
+<input type="text" name="name" id="name" value="{{user.name}}">
 
 {{!-- Address --}}
 <label for="street">Street: </label>
-<input type="text"name="street" id="street">
+<input type="text"name="street" id="street" value="{{user.street}}">
 
 <label for="city">City</label>
-<input type="text" name="city" id="city">
+<input type="text" name="city" id="city" value="{{user.city}}">
 
 <label for="postcode">Postcode</label>
-<input type="text" name="postcode" id="postcode">
+<input type="text" name="postcode" id="postcode" value="{{user.postcode}}">
 
 <button type="submit">Submit your profile</button>
 

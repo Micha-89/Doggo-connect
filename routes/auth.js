@@ -2,7 +2,8 @@ const router = require("express").Router();
 const User = require('../models/User');
 const bcrypt=require('bcrypt');
 const passport = require('passport');
-
+const shelter='SHELTER'
+const adopter='ADOPTER'
 /* LOGIN USER*/
 router.get("/loginUser", (req, res, next) => {
   res.render("auth/loginUser");
@@ -78,10 +79,16 @@ router.post("/signupUser", (req, res)=>{
           if (err) {
             // Session save went bad
             return next(err);
+          }else{
+            if(req.user.role===shelter){
+              res.render('shelterViews/profileSubmit', {user: req.user})
+            }else{
+              res.redirect('/private')
+            }
           }
      
           // All good, we are now logged in and `req.user` is now set
-          res.redirect('/private');
+          // res.redirect('/private');
         });
         // console.log(userDB)
         // res.redirect('/')

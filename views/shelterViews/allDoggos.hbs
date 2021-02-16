@@ -1,0 +1,14 @@
+
+<p> From {{user.username}}</p>
+{{#each dog}}
+
+<h3>{{name}}</h3>
+<a href="/dogs/{{this._id}}">Check me Out</a>
+ 
+<p>{{breed}}</p>
+<p>{{size}}</p>
+<p>{{age}}</p>
+<p>{{gender}}</p>
+<img style="width:200px" src="{{image}}" alt="">
+<p>{{description}}</p>
+{{/each}}

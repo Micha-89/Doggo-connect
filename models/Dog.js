@@ -5,6 +5,19 @@ const dogSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  messages:[
+    {
+      message: String,
+      applicant: {
+        type: Schema.Types.ObjectId,
+        ref:'User'
+      },
+      created: {
+        type: Date,
+        default: new Date()
+      }
+    }
+  ],
   imageUrl: String,
   publicId: String,
   description: String,

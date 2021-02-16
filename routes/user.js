@@ -54,6 +54,14 @@ router.post('/dogDetails/:id/application', (req,res) => {
 
 })
 
+router.get('/shelterDetails/:id', (req,res) => {
+  const dogId = req.params.id;
+  Dog.findById(dogId)
+  .populate('shelter')
+  .then(dogInfo => {
+    res.render('userViews/shelterDetails', { dogInfo: dogInfo })
+  })
+})
 
 
 module.exports = router;

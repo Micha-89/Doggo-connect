@@ -3,7 +3,10 @@
     <img src="/images/dog.png" alt="dog icon">
     <h1>DOGGO-CONNECT</h1>
   </div>
-  <a href="/logout">Logout</a>
+  <div>
+    <a href="/private">Dashbord</a>
+    <a href="/logout">Logout</a>
+  </div>
 </header>
 
 {{#with dog}}
@@ -18,10 +21,11 @@
       <li><span>Gender:</span>{{gender}}</li>
       <li><span>Description:</span></li>
       <li>{{description}}</li>
+      <li>{{name}} is sheltered by <a href="/shelterDetails/{{_id}}">{{shelter.name}}</a>.</li>
     </ul>
     <div>
       <h2>Apply to adopt {{name}}!</h2>
-      <p>{{name}} is sheltered by <a href="#">{{shelter.name}}</a>. Fill in the following form to give them a new home!</p>
+      <p>Fill in the following form to give them a new home!</p>
       <form action="/dogDetails/{{_id}}/application" method="POST">
         <label for="message">Please let us know why you would love to adopt {{name}}:</label>
         <br>

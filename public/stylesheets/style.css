@@ -52,19 +52,17 @@ body {
 /* 2 Dog overview user view */
 
 #dogView {
-  padding: 40px 40px;
+  padding: 20px 40px;
   display: flex;  
   flex-direction: row;
-  align-items: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* 2.2 Dog cards */
 
 #dogCard {
   position: relative;
-  margin-right: 40px;
-  margin-bottom: 30px;
   width: 250px;
   height: 250px;
   overflow: hidden;
@@ -92,6 +90,67 @@ body {
   padding-top: 10px;
   margin: 0;
   height: 20%;
+}
+
+/* Dog detail user */
+
+#dogDetailFlex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 70px 40px 0 40px;
+  font-size: 20px;
+  gap: 10px;
+  width: 80vw;
+  height: 80vh;
+}
+
+#dogDetailFlex img {
+  width: 60%;
+  height: 80%;
+  object-fit: contain;
+}
+
+#dogDetailFlex ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#dogDetailFlex li {
+  width: 600px;
+  margin-bottom: 8px;
+}
+
+#dogDetailFlex span {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 22px;
+}
+
+#dogDetailFlex h1{
+  margin: 0;
+}
+
+#dogDetailFlex p {
+  width: 600px;
+}
+
+#dogDetailFlex textarea{
+ margin: 10px 0;
+}
+
+#dogDetailFlex button {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #ebd8b7;
+}
+
+#dogDetailFlex button:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 /*# sourceMappingURL=style.css.map */

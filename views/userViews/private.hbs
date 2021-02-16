@@ -9,7 +9,7 @@
 
 <div id="dogView">
   {{#each dog}}
-    <a href="#">
+    <a href="/dogDetails/{{this._id}}">
       <div id="dogCard">
         <img src="{{this.image}}" alt="dog picture">
         <p>{{this.name}}</p>

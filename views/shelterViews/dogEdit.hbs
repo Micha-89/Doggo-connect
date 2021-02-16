@@ -1,0 +1,45 @@
+<h1>Put up a dog for adoption!</h1>
+
+<form action="/dogs/{{dog._id}}/edit" method="POST" enctype="multipart/form-data">
+
+<label for="name">Name</label>
+<input type="text" name="name" id="name" value={{dog.name}}>
+
+<label for="age">Age in months</label>
+<input type="number" name="age" id="age" value="{{dog.age}}">
+
+<div>
+   
+   
+   <label for="male">Gender</label>
+   <select name="gender" id="gender"> {{{optionsGender}}} </select>
+  
+ </div>
+
+<div>
+   
+   <label for="size">Size</label>
+   <select name="size" id="size"> {{{optionsSize}}}</select>
+   {{!-- <input type="checkbox"  name="size" value="{{optionsSize}}" id="large"> --}}
+   
+ </div>
+
+
+<label for="breed">Breed</label>
+<input type="text" name="breed" id="breed" value="{{dog.breed}}">
+
+
+<label for="image">Image</label>
+ <input type="file" name="image" id="image-input"  />
+ <input type="text" name="existingImage" hidden id="" value="{{dog.imageUrl}}">
+
+<label for="description">Description</label>
+<textarea name="description" id="description" cols="30" rows="10" placeholder="Describe your doggo..." >{{dog.description}}</textarea>
+
+<button type="submit">Update the Doggo</button>
+
+</form>
+
+{{#if message}}
+<p>{{message}}</p>
+{{/if}}

@@ -21,6 +21,7 @@ const userSchema = new Schema({
   name: String, 
   street: String, 
   city: String,
+  coordinates: [Number],
   postcode: String,  
   description: String
 

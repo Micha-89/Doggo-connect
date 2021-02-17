@@ -15,9 +15,14 @@
   <h1>{{shelter.name}}</h1>
   <h3>Address:</h3>
   <p>{{shelter.street}}</p>
-  <p>{{shelter.postcode}}, {{shelter.city}}</p>
+  <p >{{shelter.postcode}}, {{shelter.city}}</p>
+  <div class="address" hidden> {{shelter.coordinates}}</div>
   <a href="/dogDetails/{{_id}}">Go back</a>
 </div>
-
+  
 
 {{/with}}
+
+  <div id='map' style='width: 30vw; height: 30vh;'></div>
+     <script src="/js/mapbox.js"></script>
+  

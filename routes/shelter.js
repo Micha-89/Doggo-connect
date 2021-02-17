@@ -44,11 +44,11 @@ router.get('/dogs/all', checkRoles(shelter), (req, res)=>{
  const user = req.user._id;
  Dog.find({shelter: user})
  .then(dog=>{
-  //  console.log(dog)
    res.render('shelterViews/allDoggos', {dog: dog})
   }).catch(err=>console.log(err))
 })
-// 
+
+
 
 router.get('/dogs/:id', checkRoles(shelter), (req, res)=>{
   const dogId=req.params.id;

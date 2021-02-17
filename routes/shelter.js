@@ -19,11 +19,13 @@ router.get('/dogs', checkRoles(shelter), (req, res) => {
 router.post('/dogs',checkRoles(shelter), fileUploader.single('image'), (req, res)=>{
 let {name, age, gender, size, breed, description} = req.body;
 
-const imgPath = req.file.path
-const publicId = req.file.filename 
-if(!name || !age || !gender || !size || !breed || !imgPath ||  !description){
+if(!name || !age || !gender || !size || !breed || req.file == undefined ||  !description){
   res.render('shelterViews/form', {message: 'Please provide all the information on the doggo to help find him a home!'})
 }else{
+
+  const imgPath = req.file.path
+  const publicId = req.file.filename 
+
   Dog.create(
       {name: name,
       age:age, 

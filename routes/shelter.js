@@ -20,7 +20,7 @@ router.post('/dogs',checkRoles(shelter), fileUploader.single('image'), (req, res
 let {name, age, gender, size, breed, description} = req.body;
 
 if(!name || !age || !gender || !size || !breed || req.file == undefined ||  !description){
-  res.render('shelterViews/form', {message: 'Please provide all the information on the doggo to help find him a home!'})
+  res.render('shelterViews/form', {message: 'Please provide all information!'})
 }else{
 
   const imgPath = req.file.path

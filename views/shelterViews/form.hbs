@@ -9,52 +9,56 @@
   </div>
 </header>
 
-<h1>Put up a dog for adoption!</h1>
-
-<form action="/dogs" method="POST" enctype="multipart/form-data">
-
-<label for="name">Name</label>
-<input type="text" name="name" id="name">
-
-<label for="age">Age in months</label>
-<input type="number" name="age" id="age">
-
-<div>
-   <input type="checkbox"
-    name="gender" value="male" id="male" >
-   <label for="male">Male</label>
-   <input type="checkbox"  name="gender" value="female"  id="female">
-   <label for="female">Female</label>
-  
- </div>
-
-<div>
-   <input type="checkbox"
-    name="size" value="small" id="small"   >
-   <label for="small">Small</label>
-
-   <input type="checkbox"  name="size" value="middle" id="middle" >
-   <label for="middle">Middle</label>
-
-   <input type="checkbox"  name="size" value="large" id="large">
-  <label for="large">Large</label>
- </div>
 
 
-<label for="breed">Breed</label>
-<input type="text" name="breed" id="breed">
+<form action="/dogs" method="POST" enctype="multipart/form-data" id="creationForm">
 
+  <div id="form-container">
 
-<label for="image">Image</label>
-<input type="file" name="image" id="image">
+    <h2>Put up a dog for adoption!</h2>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" class="inputFieldSignUp">
+    </div>
 
-<label for="description">Description</label>
-<textarea name="description" id="description" cols="30" rows="10" placeholder="Describe your doggo..."></textarea>
+    <div>
+      <label for="age">Age in months</label>
+      <input type="number" name="age" id="age" class="inputFieldSignUp">
+    </div>
 
-<button type="submit">Create dog</button>
+    <div>
+        <label for="gender" class="selectLabel">Gender</label>
+        <select name="gender" id="gender" class="selections">
+          <option value="female">female</option>
+          <option value="male">male</option>
+        </select>
 
+        <label for="size" class="selectLabel">Size</label>
+        <select name="size" id="size" class="selections">
+          <option value="small">small</option>
+          <option value="middle">middle</option>
+          <option value="large">large</option>
+        </select>
+    </div>
+
+    <div>
+      <label for="breed">Breed</label>
+      <input type="text" name="breed" id="breed" class="inputFieldSignUp">
+    </div>
+
+    <div>
+      <label for="image">Image</label>
+      <input type="file" name="image" id="image" class="fileInput">
+    </div>
+
+    <div>
+      <label for="description">Description</label><br>
+      <textarea name="description" id="description" cols="45" rows="5" placeholder="Describe your doggo..."></textarea>
+    </div>
+    <button type="submit" id="createButton">Create dog</button>
+  </div>
+  {{#if message}}
+    <div class="error-messageCreation"><p>{{message}}</p></div>
+  {{/if}}
 </form>
 
-{{#if message}}
-<p>{{message}}</p>
-{{/if}}

@@ -1,31 +1,40 @@
-<h1>Welcome to our family, {{user.username}}</h1>
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <div>
+    <a href="/private">Dashboard</a>
+    <a href="/logout">Logout</a>
+  </div>
+</header>
 
+<div id="creationForm">
 
-<p>Before adding any posts, please complete   your user profile. By doing so, you will make it easier for your doggos to find a home!</p>
- 
+<form action="/private/profile" method="POST" id="form-container">
 
-<form action="/private/profile" method="POST">
+<h2>Profile</h2>
 
-
-<label for="name">Full name of your organization</label>
-<input type="text" name="name" id="name">
+<label for="name">Name of your organization</label>
+<input type="text" name="name" id="name" class="inputFieldSignUp">
 
 {{!-- Address --}}
-<label for="street">Street: </label>
-<input type="text"name="street" id="street">
+<label for="street">Street</label>
+<input type="text"name="street" id="street" class="inputFieldSignUp">
 
 <label for="city">City</label>
-<input type="text" name="city" id="city">
+<input type="text" name="city" id="city" class="inputFieldSignUp">
 
 <label for="postcode">Postcode</label>
-<input type="text" name="postcode" id="postcode">
+<input type="text" name="postcode" id="postcode" class="inputFieldSignUp">
 
-<button type="submit">Submit your profile</button>
+<button type="submit" id="shelterButton">Submit</button>
 
 
 </form> 
 
 {{#if message}}
-
 <p>{{message}}</p>
 {{/if}}
+
+</div>

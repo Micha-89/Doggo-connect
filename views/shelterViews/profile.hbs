@@ -4,30 +4,24 @@
     <h1>DOGGO-CONNECT</h1>
   </div>
   <div>
-    <a href="/private">Dashbord</a>
+    <a href="/private">Dashboard</a>
     <a href="/logout">Logout</a>
   </div>
 </header>
 
-<h1>Your profile information</h1>
+<div id="shelterProfileView">
 
-<div>
+  <h2>Your profile information</h2>
 
-{{#with user}}
-<p>{{name}}</p> 
+  {{#with user}}
+  <p><span class="profileInfo">Name:</span>{{name}}</p> 
 
-<p>{{username}}</p>
+  <p><span class="profileInfo">Mail:</span>{{email}}</p>
 
-<p> {{email }} </p>
+  <p><span class="profileInfo">Address:</span>{{street}}, {{postcode}} {{city}}</p> 
 
- 
-<p> Full name of your organization: {{name}}  </p>
+  {{/with}}
 
-<p> Address: {{street}} {{city}} {{postcode}}</p> 
-
-{{/with}}
-
-<p>By editing your profile you increase the chances for a doggo</p>
-<a href="/private/profile">Edit your profile</a>
+  <a href="/private/profile" id="shelterButton">Edit</a>
 
 </div>

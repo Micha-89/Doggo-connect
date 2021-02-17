@@ -4,25 +4,29 @@
     <h1>DOGGO-CONNECT</h1>
   </div>
   <div>
-    <a href="/private">Dashbord</a>
+    <a href="/private">Dashboard</a>
     <a href="/logout">Logout</a>
   </div>
 </header>
 
-{{#with dogInfo}}
+<div id="shelterDetailFlex">
 
-<div id="shelterInfo">
-  <h1>{{shelter.name}}</h1>
-  <h3>Address:</h3>
-  <p>{{shelter.street}}</p>
-  <p >{{shelter.postcode}}, {{shelter.city}}</p>
-  <div class="address" hidden> {{shelter.coordinates}}</div>
-  <a href="/dogDetails/{{_id}}">Go back</a>
+  {{#with dogInfo}}
+
+  <div id="shelterInfo">
+    <h3>{{shelter.name}}</h3>
+    <h3>Address:</h3>
+    <p>{{shelter.street}}</p>
+    <p >{{shelter.postcode}}, {{shelter.city}}</p>
+    <div class="address" hidden> {{shelter.coordinates}}</div>
+    <a href="/dogDetails/{{_id}}">Go back</a>
+  </div>
+    
+
+  {{/with}}
+
+  <div id='map' style='width: 30vw; height: 40vh;'></div>
+  <script src="/js/mapbox.js"></script>
+
 </div>
-  
-
-{{/with}}
-
-  <div id='map' style='width: 30vw; height: 30vh;'></div>
-     <script src="/js/mapbox.js"></script>
   

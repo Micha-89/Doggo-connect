@@ -134,24 +134,26 @@ router.get('/applications', checkRoles(shelter), (req, res)=>{
 
 //PROFILE PAGE:  EDIT
 
-
-
-
-
-
-
-
-
 router.get('/private/profile', checkRoles(shelter), (req, res)=>{
-  res.render('shelterViews/profileEdit')
+  const userId = req.user._id;
+  User.findById(userId).then(user => {
+    res.render('shelterViews/profileEdit', {user})
+  }).catch(err => {
+    console.log(err);
+  })
+
 })
 
 router.post('/private/profile', checkRoles(shelter), (req,res)=>{
   const {name, street, city, postcode } = req.body;
   
-
   if(!name|| !street || !city ||!postcode){
-    res.render('shelterViews/profileEdit', {message: 'Please fill in all the fields'})
+    const userId = req.user._id;
+    User.findById(userId).then(user => {
+      res.render('shelterViews/profileEdit', {user, message: 'Please fill in all the fields'})
+    }).catch(err => {
+      console.log(err);
+    })
     return 
   }
     //axios get req using API for coordinates
@@ -163,12 +165,11 @@ router.post('/private/profile', checkRoles(shelter), (req,res)=>{
     User.findByIdAndUpdate(req.user._id, {name, street, city, postcode, coordinates})
      .then(user=>{
        console.log('test')
-  
       }).catch(err=>console.log(err))
-    
   }).catch(err=>console.log(err))
-  res.redirect(`/private`)
-  
+
+  res.redirect('/private')
+
 })
 
 router.get('/private/profile/:id', checkRoles(shelter), (req, res)=>{

@@ -4,36 +4,35 @@
     <h1>DOGGO-CONNECT</h1>
   </div>
   <div>
-    <a href="/private">Dashbord</a>
+    <a href="/private">Dashboard</a>
     <a href="/logout">Logout</a>
   </div>
 </header>
 
-<h1> Please update your profile, {{user.username}}</h1>
- 
+<div id="creationForm">
+{{#with user}}
+<form action="/private/profile" method="POST" id="form-container">
 
-<form action="/private/profile" method="POST">
+<h2>Profile</h2>
 
+<label for="name">Name of your organization</label>
+<input type="text" name="name" id="name" class="inputFieldSignUp" value="{{name}}">
 
-<label for="name">Full name of your organization</label>
-<input type="text" name="name" id="name" value="{{user.name}}">
-
-{{!-- Address --}}
-<label for="street">Street: </label>
-<input type="text"name="street" id="street" value="{{user.street}}">
+<label for="street">Street</label>
+<input type="text"name="street" id="street" class="inputFieldSignUp" value="{{street}}">
 
 <label for="city">City</label>
-<input type="text" name="city" id="city" value="{{user.city}}">
+<input type="text" name="city" id="city" class="inputFieldSignUp" value="{{city}}">
 
 <label for="postcode">Postcode</label>
-<input type="text" name="postcode" id="postcode" value="{{user.postcode}}">
+<input type="text" name="postcode" id="postcode" class="inputFieldSignUp" value="{{postcode}}">
 
-<button type="submit">Submit your profile</button>
-
-
+<button type="submit" id="shelterButton">Submit</button>
+{{/with}}
 </form> 
 
 {{#if message}}
-
-<p>{{message}}</p>
+  <div class="error-message"><p>{{message}}</p></div>
 {{/if}}
+
+</div>

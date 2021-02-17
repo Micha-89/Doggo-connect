@@ -64,7 +64,7 @@ router.post("/signupUser", (req, res)=>{
   }
   User.findOne({username: username}).then(userDB=>{
     if(userDB !== null){
-    res.render('auth/signupUser', {message: 'This username is taken. Choose another 👀!'})
+    res.render('auth/signupUser', {message: 'This username is taken. Choose another!'})
     }else{
       const salt=bcrypt.genSaltSync(10);
       const hash=bcrypt.hashSync(password, salt)

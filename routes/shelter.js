@@ -109,6 +109,25 @@ router.get('/dogs/:id/delete', (req, res)=>{
   }).catch(err=>console.log(err))
 })
 
+router.get('/applications', checkRoles(shelter), (req, res)=>{
+  const user = req.user._id;
+  Dog.find({shelter: user})
+  .then(dogs=>{  
+    const dogsFiltered = dogs.filter(dog=>{
+     return dog.messages[0] !== undefined     
+    })
+   res.render('shelterViews/applications', {dog: dogsFiltered})
+   }).catch(err=>console.log(err))
+ })
+ 
+ router.get('/applications/:id', checkRoles(shelter), (req, res)=>{
+   const dogId=req.params.id;
+   Dog.findById(dogId).populate('messages.applicant')
+   .then(dog=>{
+     res.render('shelterViews/applicationDog', {dog} )
+   })
+ })
+ 
 
 //PROFILE PAGE:  EDIT
 

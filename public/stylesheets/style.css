@@ -191,6 +191,10 @@ body {
   text-decoration: none;
 }
 
+#dogViewLink {
+  margin-bottom: 8px;
+}
+
 /* Shelter details */
 
 #shelterInfo {
@@ -469,4 +473,38 @@ body {
 .fileInput {
   margin: 5px;
   font-size: 16px;
+}
+
+/* Applications */
+
+#applicationMessage {
+  background-color: rgb(153, 187, 173,0.4);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+#messageA {
+  font-size: 24px;
+}
+
+#time {
+  font-size: 14px;
+}
+
+#mailButton {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #ebd8b7;
+  width: 220px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+#mailButton:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }

@@ -11,32 +11,21 @@
 
 {{#with dog}}
 <div id="dogDetailFlex">
-  <img src="{{imageUrl}}" alt="">
+  <img src="{{imageUrl}}" alt="dog picture">
   <div>
-    <h1>{{name}}</h1>
-    
+    <a href="/dogs/{{this._id}}"><h1>{{name}}</h1></a>
+  
     {{#each messages}}
 
-   <div>
-     <p>Created: {{created}}  </p>
-      <p>Contact Information: {{applicant.email}}</p>
-      <p>{{message}}</p>
-
-   </div>
+    <div id="applicationMessage">
+        <p id="time">{{created}}</p>
+        <p id="messageA">{{message}}</p>
+        <a href="mailto: {{applicant.email}}" id="mailButton">Send Email</a>
+    </div>
    
-
     {{/each}}
     
-    
-    
-    
-    
-    
-    {{!-- <div id="buttonFlex"> --}}
-      {{!-- <a class="detailButton" href="/dogs/{{_id}}/edit">Edit</a> --}}
-      {{!-- <a class="detailButton" href="/dogs/{{_id}}/delete">Delete</a> --}}
-    {{!-- </div> --}}
-    <a href="/applications">Back</a>
+    <a href="/applications">To applications overview</a>
   </div>
 </div>
 

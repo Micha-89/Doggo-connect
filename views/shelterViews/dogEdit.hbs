@@ -9,48 +9,51 @@
   </div>
 </header>
 
-<h1>Put up a dog for adoption!</h1>
+<form action="/dogs/{{dog._id}}/edit" method="POST" enctype="multipart/form-data" id="creationForm">
 
-<form action="/dogs/{{dog._id}}/edit" method="POST" enctype="multipart/form-data">
+  <div id="form-container">
 
-<label for="name">Name</label>
-<input type="text" name="name" id="name" value={{dog.name}}>
+    <h2>Update the dog info</h2>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" class="inputFieldSignUp" value="{{dog.name}}">
+    </div>
 
-<label for="age">Age in months</label>
-<input type="number" name="age" id="age" value="{{dog.age}}">
+    <div>
+      <label for="age">Age in months</label>
+      <input type="number" name="age" id="age" class="inputFieldSignUp"  value="{{dog.age}}">
+    </div>
 
-<div>
-   
-   
-   <label for="male">Gender</label>
-   <select name="gender" id="gender"> {{{optionsGender}}} </select>
-  
- </div>
+    <div>
+        <label for="gender" class="selectLabel">Gender</label>
+        <select name="gender" id="gender" class="selections">
+          {{{optionsGender}}}
+        </select>
 
-<div>
-   
-   <label for="size">Size</label>
-   <select name="size" id="size"> {{{optionsSize}}}</select>
-   {{!-- <input type="checkbox"  name="size" value="{{optionsSize}}" id="large"> --}}
-   
- </div>
+        <label for="size" class="selectLabel">Size</label>
+        <select name="size" id="size" class="selections">
+          {{{optionsSize}}}
+        </select>
+    </div>
 
+    <div>
+      <label for="breed">Breed</label>
+      <input type="text" name="breed" id="breed" class="inputFieldSignUp" value="{{dog.breed}}">
+    </div>
 
-<label for="breed">Breed</label>
-<input type="text" name="breed" id="breed" value="{{dog.breed}}">
+    <div>
+      <label for="image">Image</label>
+      <input type="file" name="image" id="image-input" class="fileInput" />
+      <input type="text" name="existingImage" hidden id="" value="{{dog.imageUrl}}">
+    </div>
 
-
-<label for="image">Image</label>
- <input type="file" name="image" id="image-input"  />
- <input type="text" name="existingImage" hidden id="" value="{{dog.imageUrl}}">
-
-<label for="description">Description</label>
-<textarea name="description" id="description" cols="30" rows="10" placeholder="Describe your doggo..." >{{dog.description}}</textarea>
-
-<button type="submit">Update the Doggo</button>
-
+    <div>
+      <label for="description">Description</label><br>
+      <textarea name="description" id="description" cols="45" rows="5" placeholder="Describe your doggo...">{{dog.description}}</textarea>
+    </div>
+    <button type="submit" id="createButton">Update</button>
+  </div>
+  {{#if message}}
+    <div class="error-messageCreation"><p>{{message}}</p></div>
+  {{/if}}
 </form>
-
-{{#if message}}
-<p>{{message}}</p>
-{{/if}}

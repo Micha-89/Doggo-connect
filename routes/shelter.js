@@ -19,11 +19,13 @@ router.get('/dogs', checkRoles(shelter), (req, res) => {
 router.post('/dogs',checkRoles(shelter), fileUploader.single('image'), (req, res)=>{
 let {name, age, gender, size, breed, description} = req.body;
 
-const imgPath = req.file.path
-const publicId = req.file.filename 
-if(!name || !age || !gender || !size || !breed || !imgPath ||  !description){
-  res.render('shelterViews/form', {message: 'Please provide all the information on the doggo to help find him a home!'})
+if(!name || !age || !gender || !size || !breed || req.file == undefined ||  !description){
+  res.render('shelterViews/form', {message: 'Please provide all information!'})
 }else{
+
+  const imgPath = req.file.path
+  const publicId = req.file.filename 
+
   Dog.create(
       {name: name,
       age:age, 
@@ -44,11 +46,11 @@ router.get('/dogs/all', checkRoles(shelter), (req, res)=>{
  const user = req.user._id;
  Dog.find({shelter: user})
  .then(dog=>{
-  //  console.log(dog)
    res.render('shelterViews/allDoggos', {dog: dog})
   }).catch(err=>console.log(err))
 })
-// 
+
+
 
 router.get('/dogs/:id', checkRoles(shelter), (req, res)=>{
   const dogId=req.params.id;

@@ -1,0 +1,26 @@
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <div>
+    <a href="/private">Dashbord</a>
+    <a href="/logout">Logout</a>
+  </div>
+</header>
+
+<div id="dogView">
+  
+  {{#each dog}}
+    <a href="/applications/{{this._id}}">
+      <div id="dogCard">
+        <img src="{{this.imageUrl}}" alt="dog picture">
+        <p>{{this.name}}</p>
+      </div>
+    </a>
+  {{/each}}
+</div>
+
+
+
+

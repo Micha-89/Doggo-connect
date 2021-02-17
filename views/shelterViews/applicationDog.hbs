@@ -1,0 +1,43 @@
+<header id="userHeader">
+  <div>
+    <img src="/images/dog.png" alt="dog icon">
+    <h1>DOGGO-CONNECT</h1>
+  </div>
+  <div>
+    <a href="/private">Dashbord</a>
+    <a href="/logout">Logout</a>
+  </div>
+</header>
+
+{{#with dog}}
+<div id="dogDetailFlex">
+  <img src="{{imageUrl}}" alt="">
+  <div>
+    <h1>{{name}}</h1>
+    
+    {{#each messages}}
+
+   <div>
+     <p>Created: {{created}}  </p>
+      <p>Contact Information: {{applicant.email}}</p>
+      <p>{{message}}</p>
+
+   </div>
+   
+
+    {{/each}}
+    
+    
+    
+    
+    
+    
+    {{!-- <div id="buttonFlex"> --}}
+      {{!-- <a class="detailButton" href="/dogs/{{_id}}/edit">Edit</a> --}}
+      {{!-- <a class="detailButton" href="/dogs/{{_id}}/delete">Delete</a> --}}
+    {{!-- </div> --}}
+    <a href="/applications">Back</a>
+  </div>
+</div>
+
+{{/with}}

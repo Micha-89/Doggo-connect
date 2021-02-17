@@ -7,6 +7,7 @@ const loginCheck = require('../middleware/loginCheck.js')
 const checkRoles = require('../middleware/permissions.js')
 const fileUploader = require('../config/cloudinary.config');
 const cloudinary = require('cloudinary').v2;
+const axios = require('axios');
 const shelter='SHELTER'
 const adopter='ADOPTER'
 
@@ -133,32 +134,49 @@ router.get('/applications', checkRoles(shelter), (req, res)=>{
 
 //PROFILE PAGE:  EDIT
 
+
+
+
+
+
+
+
+
+router.get('/private/profile', checkRoles(shelter), (req, res)=>{
+  res.render('shelterViews/profileEdit')
+})
+
+router.post('/private/profile', checkRoles(shelter), (req,res)=>{
+  const {name, street, city, postcode } = req.body;
+  
+
+  if(!name|| !street || !city ||!postcode){
+    res.render('shelterViews/profileEdit', {message: 'Please fill in all the fields'})
+    return 
+  }
+    //axios get req using API for coordinates
+  // axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiYW5hbWFyaWFnIiwiYSI6ImNrbDI2cnNwczFhYzQycnFvanRhOHpvNnoifQ.3qmM7cisXOM7SVZBH3hHSQ`)
+  // .then(res=>console.log(res.data.features.geometry))
+  axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiYW5hbWFyaWFnIiwiYSI6ImNrbDI2cnNwczFhYzQycnFvanRhOHpvNnoifQ.3qmM7cisXOM7SVZBH3hHSQ`)
+  .then(res=>{
+    const coordinates = res.data.features[0].geometry.coordinates
+    User.findByIdAndUpdate(req.user._id, {name, street, city, postcode, coordinates})
+     .then(user=>{
+       console.log('test')
+  
+      }).catch(err=>console.log(err))
+    
+  }).catch(err=>console.log(err))
+  res.redirect(`/private`)
+  
+})
+
 router.get('/private/profile/:id', checkRoles(shelter), (req, res)=>{
   const id=req.params.id;
   User.findById(id).then(user=>{
     res.render('shelterViews/profile', {user: user})
   })
 })
-
-
-router.get('/private/profile', checkRoles(shelter), (req, res)=>{
-res.render('shelterViews/profileEdit', {user: req.user})
-})
-
-router.post('/private/profile', checkRoles(shelter), (req,res)=>{
-  const {name, street, city, postcode } = req.body;
-  if(!name|| !street || !city ||!postcode){
-    res.render('shelterViews/profileEdit', {message: 'Please fill in all the fields'})
-  }else{
-    User.findByIdAndUpdate(req.user._id, {name, street, city, postcode})
- 
-    .then(user=>{
-      res.redirect(`/private/profile/${user._id}`)
-    }).catch(err=>console.log(err))
-   }
- })
-
-
  
 
  module.exports=router

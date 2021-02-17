@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require('../models/User');
 const Dog = require('../models/Dog');
 
+router.get('/address')
+
 router.get('/dogDetails/:id', (req, res) => {
   const dogId = req.params.id;
   const userId = req.user._id;
@@ -60,7 +62,7 @@ router.get('/shelterDetails/:id', (req,res) => {
   .populate('shelter')
   .then(dogInfo => {
     res.render('userViews/shelterDetails', { dogInfo: dogInfo })
-  })
+  }).catch(err=>console.log(err))
 })
 
 

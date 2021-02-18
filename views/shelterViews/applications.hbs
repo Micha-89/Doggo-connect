@@ -9,8 +9,9 @@
   </div>
 </header>
 
+
 <div id="dogView">
-  
+  {{#if dog}}
   {{#each dog}}
     <a href="/applications/{{this._id}}">
       <div id="dogCard">
@@ -19,7 +20,18 @@
       </div>
     </a>
   {{/each}}
+  {{else}}
+    <h1>No applications...</h1>
+  {{/if}}
 </div>
+
+
+
+
+
+
+
+
 
 
 

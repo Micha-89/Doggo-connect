@@ -14,19 +14,18 @@
   <img src="{{imageUrl}}" alt="dog picture">
   <div>
     <a href="/dogs/{{this._id}}"><h1>{{name}}</h1></a>
-  
+    {{#if messages}}
     {{#each messages}}
-
     <div id="applicationMessage">
         <p id="time">{{created}}</p>
         <p id="messageA">{{message}}</p>
         <a href="mailto: {{applicant.email}}" id="mailButton">Send Email</a>
     </div>
-   
     {{/each}}
-    
+    {{else}}
+      <h3 id="applicationMessage">No applications...</h3>
+    {{/if}}
     <a href="/applications">To applications overview</a>
   </div>
 </div>
-
 {{/with}}

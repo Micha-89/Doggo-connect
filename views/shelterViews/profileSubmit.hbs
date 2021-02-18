@@ -1,4 +1,4 @@
-<header id="userHeader">
+{{!-- <header id="userHeader">
   <div>
     <img src="/images/dog.png" alt="dog icon">
     <h1>DOGGO-CONNECT</h1>
@@ -7,13 +7,13 @@
     <a href="/private">Dashboard</a>
     <a href="/logout">Logout</a>
   </div>
-</header>
+</header> --}}
 
 <div id="creationForm">
 
 <form action="/private/profile" method="POST" id="form-container">
 
-<h2>Profile</h2>
+<h2>Welcome to our family!</h2>
 
 <label for="name">Name of your organization</label>
 <input type="text" name="name" id="name" class="inputFieldSignUp">
@@ -34,7 +34,7 @@
 </form> 
 
 {{#if message}}
-<p>{{message}}</p>
+  <div class="error-message"><p>{{message}}</p></div>
 {{/if}}
 
 </div>

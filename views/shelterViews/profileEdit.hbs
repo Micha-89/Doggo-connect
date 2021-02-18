@@ -11,9 +11,9 @@
 
 <div id="creationForm">
 {{#with user}}
-<form action="/private/profile" method="POST" id="form-container">
+<form action="/private/profile/{{_id}}" method="POST" id="form-container">
 
-<h2>Profile</h2>
+<h2>Update Profile!</h2>
 
 <label for="name">Name of your organization</label>
 <input type="text" name="name" id="name" class="inputFieldSignUp" value="{{name}}">
@@ -27,7 +27,7 @@
 <label for="postcode">Postcode</label>
 <input type="text" name="postcode" id="postcode" class="inputFieldSignUp" value="{{postcode}}">
 
-<button type="submit" id="shelterButton">Submit</button>
+<button type="submit" id="shelterButton">Update</button>
 {{/with}}
 </form> 
 

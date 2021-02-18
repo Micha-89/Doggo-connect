@@ -8,6 +8,7 @@
 
 
 <div id="dogView">
+  {{#if dog}}
   {{#each dog}}
     <a href="/dogDetails/{{this._id}}">
       <div id="dogCard">
@@ -16,8 +17,10 @@
       </div>
     </a>
   {{/each}}
+  {{else}}
+    <h1>No dogs put up for adoption...</h1>
+  {{/if}}
 </div>
-
 
 
 

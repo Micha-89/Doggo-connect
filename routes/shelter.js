@@ -137,7 +137,7 @@ router.get('/applications', checkRoles(shelter), (req, res)=>{
 router.get('/private/profile', checkRoles(shelter), (req, res)=>{
   const userId = req.user._id;
   User.findById(userId).then(user => {
-    res.render('shelterViews/profileEdit', {user})
+    res.render('shelterViews/profileSubmit', {user})
   }).catch(err => {
     console.log(err);
   })
@@ -150,7 +150,7 @@ router.post('/private/profile', checkRoles(shelter), (req,res)=>{
   if(!name|| !street || !city ||!postcode){
     const userId = req.user._id;
     User.findById(userId).then(user => {
-      res.render('shelterViews/profileEdit', {user, message: 'Please fill in all the fields'})
+      res.render('shelterViews/profileSubmit', {user, message: 'Please fill in all the fields'})
     }).catch(err => {
       console.log(err);
     })
@@ -179,5 +179,39 @@ router.get('/private/profile/:id', checkRoles(shelter), (req, res)=>{
   })
 })
  
+router.get('/private/profile/:id/edit', checkRoles(shelter), (req, res)=>{
+  const id=req.params.id;
+  User.findById(id).then(user=>{
+    res.render('shelterViews/profileEdit', {user: user})
+  })
+})
+ 
 
+router.post('/private/profile/:id', checkRoles(shelter), (req,res)=>{
+  const {name, street, city, postcode } = req.body;
+  const id = req.params.id
+  if(!name|| !street || !city ||!postcode){
+    const userId = req.user._id;
+    User.findById(userId).then(user => {
+      res.render('shelterViews/profileEdit', {user, message: 'Please fill in all the fields'})
+    }).catch(err => {
+      console.log(err);
+    })
+    return 
+  }
+    //axios get req using API for coordinates
+  // axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiYW5hbWFyaWFnIiwiYSI6ImNrbDI2cnNwczFhYzQycnFvanRhOHpvNnoifQ.3qmM7cisXOM7SVZBH3hHSQ`)
+  // .then(res=>console.log(res.data.features.geometry))
+  axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoiYW5hbWFyaWFnIiwiYSI6ImNrbDI2cnNwczFhYzQycnFvanRhOHpvNnoifQ.3qmM7cisXOM7SVZBH3hHSQ`)
+  .then(res=>{
+    const coordinates = res.data.features[0].geometry.coordinates
+    User.findByIdAndUpdate(req.user._id, {name, street, city, postcode, coordinates})
+     .then(user=>{
+       console.log('test')
+      }).catch(err=>console.log(err))
+  }).catch(err=>console.log(err))
+
+  res.redirect('/private')
+
+})
  module.exports=router

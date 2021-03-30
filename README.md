@@ -19,7 +19,7 @@ This version is not mobile responsive.
 
 ### Take a closer look
 
-Youtube video:
+Youtube video (1:28 min):
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6eFH7NoqC9w/0.jpg)](https://www.youtube.com/watch?v=6eFH7NoqC9w)
 

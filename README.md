@@ -4,7 +4,7 @@ Doggo-connect is a web application that is meant to make the contact between pos
 
 During the sign up you have to specify if you are either an adopter or a shelter. This determines which dashboard you will see and which actions you can take after logging in. 
 
-This was a group project where I mostly contributed to the frontend using HTML, CSS, Handlebars, and some JavaScript. I also was responsible for some of the backend CRUD functionalities and routes in the adopter view.
+This was a group project where I mostly contributed to the design and the frontend using HTML, CSS, Handlebars, and some JavaScript. I also was responsible for some of the backend CRUD functionalities and routes in the adopter view.
 
 ### Which stack and tools?
 
